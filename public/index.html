@@ -1070,7 +1070,7 @@
   // section add
   function saveCategorie() {
     console.log(document.getElementById('categorieaded').value);
-    fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Pcategories', {
+    fetch('http://localhost/IMAD_wiki-main/Back_end/start/middleware.php/Pcategories', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -1089,7 +1089,7 @@
 
   function saveTag() {
     console.log(document.getElementById('tagaded').value);
-    fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Ptags', {
+    fetch('http://localhost/IMAD_wiki-main/Back_end/start/middleware.php/Ptags', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -1105,7 +1105,7 @@
       });
   }
   // section fecth
-  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Categorie', {
+  fetch('http://localhost/IMAD_wiki-main/Back_end/start/middleware.php/Categorie', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -1118,7 +1118,7 @@
       .catch((error) => {
         console.error('Error:', error);
       });
-      fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Tags', {
+      fetch('http://localhost/IMAD_wiki-main/Back_end/start/middleware.php/Tags', {
       headers: {
         'Content-Type': 'application/json'
       },
