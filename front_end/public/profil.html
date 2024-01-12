@@ -23,7 +23,7 @@
  cursor: pointer;
  transition: .5s;
  font-weight: 400;
- font-size: 17px;
+ font-size: 14px;
  border: 1px solid;
  font-family: inherit;
  text-transform: uppercase;
@@ -68,7 +68,7 @@
 }
 .button1 {
  --color: #e43434;
- padding: 0.8em 1.7em;
+ padding: 0.5em 1.1em;
  background-color: transparent;
  border-radius: .3em;
  position: relative;
@@ -76,7 +76,7 @@
  cursor: pointer;
  transition: .5s;
  font-weight: 400;
- font-size: 17px;
+ font-size: 14px;
  border: 1px solid;
  font-family: inherit;
  text-transform: uppercase;
@@ -117,6 +117,61 @@
 }
 
 .button1:active {
+ filter: brightness(.8);
+}
+.button2 {
+ --color: #a833c5;
+ padding: 0.5em 1.1em;
+ background-color: transparent;
+ border-radius: .3em;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
+ transition: .5s;
+ font-weight: 400;
+ font-size: 14px;
+ border: 1px solid;
+ font-family: inherit;
+ text-transform: uppercase;
+ color: var(--color);
+ z-index: 1;
+ margin: 5px;
+
+}
+
+.button2::before, .button2::after {
+ content: '';
+ display: block;
+ width: 50px;
+ height: 50px;
+ transform: translate(-50%, -50%);
+ position: absolute;
+ border-radius: 50%;
+ z-index: -1;
+ background-color: var(--color);
+ transition: 1s ease;
+}
+
+.button2::before {
+ top: -1em;
+ left: -1em;
+}
+
+.button2::after {
+ left: calc(100% + 1em);
+ top: calc(100% + 1em);
+}
+
+.button2:hover::before, .button2:hover::after {
+ height: 410px;
+ width: 410px;
+}
+
+.button2:hover {
+ color: rgb(10, 25, 30);
+}
+
+.button2:active {
  filter: brightness(.8);
 }
 </style>
@@ -238,45 +293,7 @@
       <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
         <div
           class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
-          <!-- Mobile hamburger -->
-          <!-- <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
-            @click="toggleSideMenu" aria-label="Menu">
-            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <!-- 
-          <div class="flex justify-center flex-1 lg:mr-32">
-            <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
-              <div class="absolute inset-y-0 flex items-center pl-2">
-                <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd"
-                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                    clip-rule="evenodd"></path>
-                </svg>
-              </div>
-              <input
-                class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
-                type="text" placeholder="Search for projects" aria-label="Search" />
 
-            </div>
-            <div>
-              <select data-te-select-init>
-                <option value="1">Tag</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div>
-              <select data-te-select-init>
-                <option value="1">category</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div> -->
           <ul class="flex items-center flex-shrink-0 space-x-6">
 
             <li class="flex">
@@ -452,7 +469,7 @@
     <div class="flex flex-col p-5  grid grid-cols-1 gap-5 ">
       </br>
       <div class="grid grid-cols-1 gap-4">
-        <div class="bg-white p-5 mb-10 border  border-purple-600 rounded-lg">
+        <div class="bg-white py-6 px-6 mb-10 border  border-purple-600 rounded-lg">
           <div class="flex items-center space-x-3">
             <div class="overflow-hidden  mx-6  my-6  bg-slate-400">
               <img class="rounded-full h-8 w-8" src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe" alt="profil">
@@ -476,13 +493,14 @@
             numquam officiis expedita culpa hic sequi quasi reprehenderit iste obcaecati nostrum. Consequuntur
             aliquam,
             assumenda architecto animi veniam dolore dolor?</p>
-          <button class="text-white font-semibold bg-purple-600 hover:bg-blue-800 p-2 my-1 rounded my-6 mx-3 ">Read
-            More...</button>
+            <button class="button2 ">Read
+              More...</button>
+              <button class="button1">supprimer</button>
         </div>
         </br>
         </br>
         <div class="grid grid-cols-1 gap-4">
-          <div class="bg-white p-5 mb-10 border  border-purple-600 rounded-lg">
+          <div class="bg-white p-5 mb-10 py-6 px-6 border  border-purple-600 rounded-lg">
             <div class="flex items-center space-x-3">
               <div class="overflow-hidden  mx-6  my-6 h-8 w-8 rounded-full bg-slate-400">
                 <img src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe" alt="profil">
@@ -506,8 +524,9 @@
               numquam officiis expedita culpa hic sequi quasi reprehenderit iste obcaecati nostrum. Consequuntur
               aliquam,
               assumenda architecto animi veniam dolore dolor?</p>
-            <button class="text-white font-semibold bg-purple-600 hover:bg-blue-800 p-2 my-1 rounded my-6 mx-3 ">Read
+            <button class="button2 ">Read
               More...</button>
+              <button class="button1">supprimer</button>
           </div>
           </br>
           </br>

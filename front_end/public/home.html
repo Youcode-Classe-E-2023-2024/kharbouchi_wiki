@@ -10,52 +10,119 @@
     href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
   <link rel="stylesheet" href="assets/css/tailwind.output.css" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
   <script src="assets/js/init-alpine.js"></script>
 
   <style>
-    .btn {
-      border: none;
-      width: 5em;
-      height: 3em;
-      border-radius: 3em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      background: #1C1A1C;
-      cursor: pointer;
-      transition: all 450ms ease-in-out;
-    }
+.button2 {
+ --color: #a833c5;
+ padding: 0.5em 1.1em;
+ background-color: transparent;
+ border-radius: .3em;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
+ transition: .5s;
+ font-weight: 400;
+ font-size: 14px;
+ border: 1px solid;
+ font-family: inherit;
+ text-transform: uppercase;
+ color: var(--color);
+ z-index: 1;
+ margin: 5px;
 
-    .sparkle {
-      fill: #AAAAAA;
-      transition: all 800ms ease;
-    }
+}
 
-    .text {
-      font-weight: 600;
-      color: #AAAAAA;
-      font-size: medium;
-    }
+.button2::before, .button2::after {
+ content: '';
+ display: block;
+ width: 50px;
+ height: 50px;
+ transform: translate(-50%, -50%);
+ position: absolute;
+ border-radius: 50%;
+ z-index: -1;
+ background-color: var(--color);
+ transition: 1s ease;
+}
 
-    .btn:hover {
-      background: linear-gradient(0deg, #A47CF3, #683FEA);
-      box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
-        inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
-        0px 0px 0px 4px rgba(255, 255, 255, 0.2),
-        0px 0px 180px 0px #9917FF;
-      transform: translateY(-2px);
-    }
+.button2::before {
+ top: -1em;
+ left: -1em;
+}
 
-    .btn:hover .text {
-      color: white;
-    }
+.button2::after {
+ left: calc(100% + 1em);
+ top: calc(100% + 1em);
+}
 
-    .btn:hover .sparkle {
-      fill: white;
-      transform: scale(1.2);
-    }
+.button2:hover::before, .button2:hover::after {
+ height: 410px;
+ width: 410px;
+}
+
+.button2:hover {
+ color: rgb(10, 25, 30);
+}
+
+.button2:active {
+ filter: brightness(.8);
+}
+.btn {
+ --color: #a833c5;
+ padding: 0.5em 1.1em;
+ background-color: transparent;
+ border-radius: .3em;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
+ transition: .5s;
+ font-weight: 400;
+ font-size: 14px;
+ border: 1px solid;
+ font-family: inherit;
+ text-transform: uppercase;
+ color: var(--color);
+ z-index: 1;
+ margin: 5px;
+
+}
+
+.btn::before, .btn::after {
+ content: '';
+ display: block;
+ width: 50px;
+ height: 50px;
+ transform: translate(-50%, -50%);
+ position: absolute;
+ border-radius: 50%;
+ z-index: -1;
+ background-color: var(--color);
+ transition: 1s ease;
+}
+
+.btn::before {
+ top: -1em;
+ left: -1em;
+}
+
+.btn::after {
+ left: calc(100% + 1em);
+ top: calc(100% + 1em);
+}
+
+.btn:hover::before, .btn:hover::after {
+ height: 410px;
+ width: 410px;
+}
+
+.btn:hover {
+ color: rgb(10, 25, 30);
+}
+
+.btn:active {
+ filter: brightness(.8);
+}
   </style>
 </head>
 
@@ -431,7 +498,7 @@
           <div class="flex flex-col p-5  grid grid-cols-1 gap-5 ">
             </br>
             <div class="grid grid-cols-1 gap-4">
-              <div class="bg-white p-5 mb-10 border  border-purple-600 rounded-lg">
+              <div class="bg-white p-5 mb-10 py-6 px-6 border  border-purple-600 rounded-lg">
                 <div class="flex items-center space-x-3">
                   <div class="overflow-hidden  mx-6  my-6  bg-slate-400">
                     <img class="rounded-full h-8 w-8" src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe" alt="profil">
@@ -455,13 +522,13 @@
                   numquam officiis expedita culpa hic sequi quasi reprehenderit iste obcaecati nostrum. Consequuntur
                   aliquam,
                   assumenda architecto animi veniam dolore dolor?</p>
-                <button class="text-white font-semibold bg-purple-600 hover:bg-blue-800 p-2 my-1 rounded my-6 mx-3 ">Read
-                  More...</button>
+                  <button class="button2">Read
+                    More...</button>
               </div>
               </br>
               </br>
               <div class="grid grid-cols-1 gap-4">
-                <div class="bg-white p-5 mb-10 border  border-purple-600 rounded-lg">
+                <div class="bg-white p-5 mb-10 py-6 px-6 border  border-purple-600 rounded-lg">
                   <div class="flex items-center space-x-3">
                     <div class="overflow-hidden  mx-6  my-6 h-8 w-8 rounded-full bg-slate-400">
                       <img src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe" alt="profil">
@@ -485,13 +552,13 @@
                     numquam officiis expedita culpa hic sequi quasi reprehenderit iste obcaecati nostrum. Consequuntur
                     aliquam,
                     assumenda architecto animi veniam dolore dolor?</p>
-                  <button class="text-white font-semibold bg-purple-600 hover:bg-blue-800 p-2 my-1 rounded my-6 mx-3 ">Read
-                    More...</button>
+                    <button class="button2 ">Read
+                      More...</button>
                 </div>
                 </br>
                 </br>
                 <div class="grid grid-cols-1 gap-4">
-                  <div class="bg-white p-5 mb-10 border  border-purple-600 rounded-lg">
+                  <div class="bg-white p-5 mb-10 py-6 px-6 border  border-purple-600 rounded-lg">
                     <div class="flex items-center space-x-3">
                       <div class="overflow-hidden  mx-6  my-6 h-8 w-8 rounded-full bg-slate-400">
                         <img src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe" alt="profil">
@@ -515,8 +582,8 @@
                       numquam officiis expedita culpa hic sequi quasi reprehenderit iste obcaecati nostrum. Consequuntur
                       aliquam,
                       assumenda architecto animi veniam dolore dolor?</p>
-                    <button class="text-white font-semibold bg-purple-600 hover:bg-blue-800 p-2 my-1 rounded my-6 mx-3 ">Read
-                      More...</button>
+                      <button class="button2 ">Read
+                        More...</button>
                   </div>
                   </br>
                 </div>
