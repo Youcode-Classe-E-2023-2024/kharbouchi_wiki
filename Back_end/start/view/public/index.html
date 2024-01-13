@@ -542,7 +542,7 @@
   function saveCategorie() {
     document.querySelector('#my_modal_1').style.display = 'none' 
     console.log(document.getElementById('categorieaded').value);
-    fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Pcategorie', {
+    fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Pcategorie', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -562,7 +562,7 @@
   function saveTag() {
     document.querySelector('#my_modal_2').style.display = 'none' 
     console.log(document.getElementById('tagaded').value);
-    fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Ptags', {
+    fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Ptags', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -578,7 +578,7 @@
       });
   }
   // section fecth
-  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Categorie', {
+  fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Categorie', {
     headers: {
         'Content-Type': 'application/json'
     },
@@ -631,7 +631,7 @@
 
 function modifyCategory(categoryId) {
    
-  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Mcategorie', {
+  fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Mcategorie', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -649,7 +649,7 @@ function modifyCategory(categoryId) {
 }
 function deleteCategory(categoryId) {
    
-  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Dcategorie', {
+  fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Dcategorie', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -666,7 +666,7 @@ function deleteCategory(categoryId) {
   
 }
 
-fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Tags', {
+fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Tags', {
     headers: {
         'Content-Type': 'application/json'
     },
@@ -722,7 +722,7 @@ fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Tags', {
 
      
    
-   fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Mtags', {
+   fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Mtags', {
        method: 'PUT',
        headers: {
          'Content-Type': 'application/json'
@@ -742,7 +742,7 @@ fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Tags', {
 }
 function deleteTag(tagId) {
 
-  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Dtags', {
+  fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Dtags', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -759,7 +759,7 @@ function deleteTag(tagId) {
     
 }
 
-      fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/users', {
+      fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/users', {
     headers: {
         'Content-Type': 'application/json'
     },
@@ -816,7 +816,7 @@ function deleteTag(tagId) {
 
 // Function to handle user deletion
 function deleteUser(userId) {
-  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Dusers', {
+  fetch('http://localhost/kharbouchi_wiki/Back_end/start/middleware.php/Dusers', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
