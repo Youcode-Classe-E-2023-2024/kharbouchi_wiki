@@ -182,7 +182,7 @@
             add Wiki™
             <span class="ml-2" aria-hidden="true">+</span>
           </button>
-          <dialog id="my_modal_1" class=" rounded-lg w-full">
+          <dialog id="my_modal_1" class=" rounded-lg ">
             <div class="modal-box">
               <form class="" method="dialog">
                 <div class="mt-4 mb-6">
@@ -228,11 +228,10 @@
                               </label>
                             </div>
                             <div class="w-full p-3 md:flex-1">
-                              <select name="probleme" id="probleme" multiple>
-                                <option value="Front-end">Front-end</option>
-                                <option value="Back-end">Back-end</option>
-
+                              <select class="alltags" name="probleme" id="probleme" multiple >
+                                
                               </select>
+                              
                             </div>
                           </div>
                           <div class="py-6  dark:border-gray-800">
@@ -245,11 +244,41 @@
                                   </label>
                                 </div>
                                 <div class="w-full p-3 md:flex-1">
-                                  <select name="Catégorie" id="Catégorie" multiple>
-                                    <option value="Front-end">Front-end</option>
-                                    <option value="Back-end">Back-end</option>
-
+                                  <select class="allcategories" name="Catégorie" id="Catégorie" multiple onchange="handleCategorySelectChange()">
+                                    <script>
+                                      function handleCategorySelectChange() {
+                                        // Get the selected options
+                                        const selectedOptions = document.querySelectorAll('.allcategories option:checked');
+                                  
+                                        // Extract and log the IDs of the selected options
+                                        const selectedIds = Array.from(selectedOptions).map(option => option.value);
+                                        console.log('Selected Category IDs:', selectedIds);
+                                      }
+                                  
+                                      fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Categorie', {
+                                        headers: {
+                                          'Content-Type': 'application/json'
+                                        },
+                                      })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                          console.log('Success:', data);
+                                  
+                                          // Clear existing content in the select dropdown
+                                          document.querySelector(".allcategories").innerHTML = "";
+                                  
+                                          // Iterate over each category in the data array
+                                          data.forEach(category => {
+                                            // Append an option to the select dropdown for each category
+                                            document.querySelector('.allcategories').innerHTML += `<option value="${category.id}">${category.name}</option>`;
+                                          });
+                                        })
+                                        .catch(error => {
+                                          console.error('Error:', error);
+                                        });
+                                    </script>
                                   </select>
+                                  
                                 </div>
                               </div>
                               <button class="btn" onclick="clickplproduct()">
@@ -600,5 +629,34 @@
     new MultiSelectTag('Catégorie')
   </script>
 </body>
-
+<script>
+                                 
+                              
+                                  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/tags', {
+                                    headers: {
+                                      'Content-Type': 'application/json'
+                                    },
+                                  })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                      console.log('Success:', data);
+                              
+                                      // Clear existing content in the select dropdown
+                                     
+                              
+                                      // Iterate over each category in the data array
+                                      data.forEach(tag => {
+                                        console.log(tag)
+                                        // Append an option to the select dropdown for each tag
+                                        document.querySelector('.alltags').innerHTML += `<option value="${tag.id}" onclick="clicked(${tag.id})">${tag.name}</option>`;
+                                      });
+                                    })
+                                    .catch(error => {
+                                      console.error('Error:', error);
+                                    });
+                                     function clicked(tagId) {
+                                    console.log('Tag clicked with ID:', tagId);
+                                    // Add your logic here for handling the click event
+                                  }
+                                </script>
 </html>

@@ -14,6 +14,37 @@
   <script src="./assets/js/charts-lines.js" defer></script>
   <script src="./assets/js/charts-pie.js" defer></script>
   <style>
+   .custom-container {
+    cursor: pointer;
+    display: inline-block; /* Ensures the container takes only as much width as necessary */
+  }
+
+  .custom-container input {
+    display: none;
+  }
+
+  .custom-container svg {
+    overflow: visible;
+    height: 2em; /* Set the height as desired */
+    width: 2em;  /* Set the width as desired */
+  }
+
+  .custom-path {
+    fill: none;
+    stroke: white;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+    stroke-dasharray: 241 9999999;
+    stroke-dashoffset: 0;
+  }
+
+  .custom-container input:checked ~ svg .custom-path {
+    stroke-dasharray: 70.5096664428711 9999999;
+    stroke-dashoffset: -262.2723388671875;
+  }
+
     .btn {
       border: none;
       width: 5em;
@@ -89,7 +120,7 @@
         <div class="px-6 my-6">
           <button
             class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-            onclick="my_modal_1.showModal()" href="#" id="modals">
+            onclick="showcat()" href="#" id="modals">
             ADD Categorie
             <span class="ml-2" aria-hidden="true">+</span>
           </button>
@@ -127,7 +158,7 @@
         <div class="px-6 my-6">
           <button
             class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-            onclick="my_modal_2.showModal()" href="#" id="modals">
+            onclick="showtag()" href="#" id="modals">
             ADD tag
             <span class="ml-2" aria-hidden="true">+</span>
           </button>
@@ -422,8 +453,8 @@
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                   Utilisateurs
                 </p>
-                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  6389
+                <p class="userscount text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  
                 </p>
               </div>
             </div>
@@ -506,186 +537,13 @@
 
                   </tr>
                 </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                          <img class="object-cover w-full h-full rounded-full"
-                            src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                            alt="" loading="lazy" />
-                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                        </div>
-                        <div>
-                          <p class="font-semibold">Hans Burger</p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            10x Developer
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      $ 863.45
-                    </td>
-                    <td class="px-4 py-3 text-xs">
-                      <button
-                        class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                        supprimer
-                      </button>
-                    </td>
-                  </tr>
+                <tbody class="userscontainer bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                          <img class="object-cover w-full h-full rounded-full"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&facepad=3&fit=facearea&s=707b9c33066bf8808c934c8ab394dff6"
-                            alt="" loading="lazy" />
-                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                        </div>
-                        <div>
-                          <p class="font-semibold">Jolina Angelie</p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Unemployed
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      $ 369.95
-                    </td>
-                    <td class="px-4 py-3 text-xs">
-                      <button
-                        class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                        supprimer
-                      </button>
-                    </td>
-                  </tr>
-
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                          <img class="object-cover w-full h-full rounded-full"
-                            src="https://images.unsplash.com/photo-1502720705749-871143f0e671?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=b8377ca9f985d80264279f277f3a67f5"
-                            alt="" loading="lazy" />
-                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                        </div>
-                        <div>
-                          <p class="font-semibold">Dave Li</p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Influencer
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      $ 863.45
-                    </td>
-                    <td class="px-4 py-3 text-xs">
-                      <button
-                        class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                        supprimer
-                      </button>
-                    </td>
-                  </tr>
-
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                          <img class="object-cover w-full h-full rounded-full"
-                            src="https://images.unsplash.com/photo-1551006917-3b4c078c47c9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                            alt="" loading="lazy" />
-                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                        </div>
-                        <div>
-                          <p class="font-semibold">Rulia Joberts</p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Actress
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      $ 1276.45
-                    </td>
-                    <td class="px-4 py-3 text-xs">
-                      <button
-                        class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                        supprimer
-                      </button>
-                    </td>
-                  </tr>
-
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                          <img class="object-cover w-full h-full rounded-full"
-                            src="https://images.unsplash.com/photo-1546456073-6712f79251bb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                            alt="" loading="lazy" />
-                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                        </div>
-                        <div>
-                          <p class="font-semibold">Wenzel Dashington</p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Actor
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      $ 863.45
-                    </td>
-                    <td class="px-4 py-3 text-xs">
-                      <button
-                        class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                        supprimer
-                      </button>
-                    </td>
-
-                  </tr>
-
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                          <img class="object-cover w-full h-full rounded-full"
-                            src="https://images.unsplash.com/photo-1502720705749-871143f0e671?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=b8377ca9f985d80264279f277f3a67f5"
-                            alt="" loading="lazy" />
-                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                        </div>
-                        <div>
-                          <p class="font-semibold">Dave Li</p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Influencer
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      $ 863.45
-                    </td>
-                    <td class="px-4 py-3 text-xs">
-                      <button
-                        class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                        supprimer
-                      </button>
-                    </td>
-                  </tr>
+                 
                 </tbody>
               </table>
             </div>
           </div>
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Charts
-          </h2>
           <div class="display flex-col">
             <h1 class="italic text-base">Categorie</h1>
           <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
@@ -699,30 +557,8 @@
                   <th class="px-4 py-3">supprimer</th>
                 </tr>
               </thead>
-              <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                <tr class="text-gray-700 dark:text-gray-400">
-                  <td class="px-4 py-3">
-                    <div class="flex items-center text-sm">
-  
-                      <div>
-                        <p class="font-semibold">Jolina Angelie</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-4 py-3 text-sm">
-                   
-                      <input id="categorieaded" name="name" rows="4" type="text" placeholder="your text here.."
-                        required
-                        class="block w-13 h-4 px-4 py-4 leading-tight placeholder-gray-400 border rounded dark:placeholder-gray-500 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-800 "></textarea>
-                    
-                  </td>
-                  <td class="px-4 py-3 text-xs">
-                    <button
-                      class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                      supprimer
-                    </button>
-                  </td>
-                </tr>
+              <tbody class=" categoriecontainer bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                
               </tbody>
             </table>
           </div>
@@ -738,35 +574,12 @@
                     <th class="px-4 py-3">supprimer</th>
                   </tr>
                 </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-    
-                        <div>
-                          <p class="font-semibold">Jolina Angelie</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                     
-                        <input id="categorieaded" name="name" rows="4" type="text" placeholder="change.."
-                          required
-                          class="block w-13 h-4 px-4 py-4 leading-tight placeholder-gray-400 border rounded dark:placeholder-gray-500 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-800 "></textarea>
-                      
-                    </td>
-                    <td class="px-4 py-3 text-xs">
-                      <button
-                        class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                        supprimer
-                      </button>
-                    </td>
-                  </tr>
+                <tbody class="tagcontainer bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                  
                 </tbody>
               </table>
             </div>
           </div>
-    </div>
   </div>
 </div>
   </div>
@@ -778,9 +591,16 @@
 </body>
 <script>
   // section add
+  function showcat(){
+    document.querySelector('#my_modal_1').style.display = 'block' 
+  }
+  function showtag(){
+    document.querySelector('#my_modal_2').style.display = 'block' 
+  }
   function saveCategorie() {
+    document.querySelector('#my_modal_1').style.display = 'none' 
     console.log(document.getElementById('categorieaded').value);
-    fetch('http://localhost/IMAD_wiki-main/Back_end/start/middleware.php/Pcategories', {
+    fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Pcategorie', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -798,8 +618,9 @@
 
 
   function saveTag() {
+    document.querySelector('#my_modal_2').style.display = 'none' 
     console.log(document.getElementById('tagaded').value);
-    fetch('http://localhost/IMAD_wiki-main/Back_end/start/middleware.php/Ptags', {
+    fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Ptags', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -815,11 +636,65 @@
       });
   }
   // section fecth
-  fetch('http://localhost/IMAD_wiki-main/Back_end/start/middleware.php/Categorie', {
+  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Categorie', {
+    headers: {
+        'Content-Type': 'application/json'
+    },
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+
+        // Clear existing content in the categoriecontainer
+        document.querySelector(".categoriecontainer").innerHTML = "";
+
+        // Iterate over each category in the data array
+        data.forEach(category => {
+            // Generate HTML for each category
+            const categoryHtml = `
+                <tr class="text-gray-700 dark:text-gray-400">
+                    <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                            <div>
+                                <p class="font-semibold">${category.name}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 text-sm flex  justify-center items-center">
+                        <input id="categorieadded${category.id}" name="name" value="${category.name}" type="text"
+                            placeholder="your text here.." required
+                            class="valuecat${category.id} mr-5 block w-13 h-4 px-4 py-4 leading-tight placeholder-gray-400 border rounded dark:placeholder-gray-500 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-800"></input>
+                            <label class="custom-container" onclick="modifyCategory(${category.id})">
+  <input type="checkbox">
+  <svg viewBox="0 0 64 64" class="custom-svg">
+    <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="custom-path"></path>
+  </svg>
+</label>
+                            </td>
+                    <td class="px-4 py-3 text-xs">
+                        <button onclick="deleteCategory(${category.id})"
+                            class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
+                            supprimer
+                        </button>
+                    </td>
+                </tr>`;
+
+          
+            document.querySelector(".categoriecontainer").innerHTML += categoryHtml;
+        });
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+function modifyCategory(categoryId) {
+   
+  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Mcategorie', {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      
+      body: JSON.stringify({ 'id': categoryId , "value":document.querySelector(`.valuecat${categoryId}`).value})
     })
       .then(response => response.json())
       .then(data => {
@@ -828,11 +703,16 @@
       .catch((error) => {
         console.error('Error:', error);
       });
-      fetch('http://localhost/IMAD_wiki-main/Back_end/start/middleware.php/Tags', {
+ 
+}
+function deleteCategory(categoryId) {
+   
+  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Dcategorie', {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
-      
+      body: JSON.stringify({ 'id': categoryId })
     })
       .then(response => response.json())
       .then(data => {
@@ -841,6 +721,175 @@
       .catch((error) => {
         console.error('Error:', error);
       });
+  
+}
+
+fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Tags', {
+    headers: {
+        'Content-Type': 'application/json'
+    },
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+
+        // Clear existing content in the tagcontainer
+        document.querySelector(".tagcontainer").innerHTML = "";
+
+        // Iterate over each tag in the data array
+        data.forEach(tag => {
+            // Generate HTML for each tag
+            const tagHtml = `
+                <tr class="text-gray-700 dark:text-gray-400">
+                    <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                            <div>
+                                <p class="font-semibold">${tag.name}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 text-sm flex  justify-center items-center">
+                        <input id="categorieadded" name="name" value="${tag.name}" type="text"
+                            placeholder="your text here.." required
+                           
+                            class="valuetag${tag.id} mr-5 block w-13 h-4 px-4 py-4 leading-tight placeholder-gray-400 border rounded dark:placeholder-gray-500 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-800"></input>
+                            <label class="custom-container" onclick="modifytag(${tag.id})">
+  <input type="checkbox">
+  <svg viewBox="0 0 64 64" class="custom-svg">
+    <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="custom-path"></path>
+  </svg>
+</label>
+                            </td>
+                    <td class="px-4 py-3 text-xs">
+                        <button onclick="deleteTag(${tag.id})"
+                            class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
+                            supprimer
+                        </button>
+                    </td>
+                </tr>`;
+
+
+            document.querySelector(".tagcontainer").innerHTML += tagHtml;
+        });
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+    function modifytag(tagId) {
+
+     
+   
+   fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Mtags', {
+       method: 'PUT',
+       headers: {
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({ 'id': tagId , "value":document.querySelector(`.valuetag${tagId}`).value})
+     })
+       .then(response => response.json())
+       .then(data => {
+         console.log('Success:', data);
+       })
+       .catch((error) => {
+         console.error('Error:', error);
+       });
+
+ 
+
+}
+function deleteTag(tagId) {
+
+  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Dtags', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 'id': tagId })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    
+}
+
+      fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/users', {
+    headers: {
+        'Content-Type': 'application/json'
+    },
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+
+        // Assuming your data is an array of user objects
+        var x = 0;
+        data.forEach(user => {
+          x++;
+            // Generate HTML for each user
+            const userHtml = `
+                <tr class="text-gray-700 dark:text-gray-400">
+                    <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                            <!-- Avatar with inset shadow -->
+                            <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                <img class="object-cover w-full h-full rounded-full"
+                                    src="${user.photo || 'https://placekitten.com/200/200'}"
+                                    alt="${user.email}" loading="lazy" />
+                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                            </div>
+                            <div>
+                                <p class="font-semibold">${user.email}</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    ${user.role}
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 text-sm">
+                        <!-- You may want to display the user's role or other details here -->
+                        <!-- ${user.role} -->
+                    </td>
+                    <td class="px-4 py-3 text-xs">
+                        <button
+                            class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100"
+                            onclick="deleteUser(${user.id})">
+                            Supprimer
+                        </button>
+                    </td>
+                </tr>`;
+                
+            // Append the HTML to the users container
+            document.querySelector(".userscontainer").innerHTML += userHtml;
+        });
+        document.querySelector('.userscount').textContent = x;
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+// Function to handle user deletion
+function deleteUser(userId) {
+  fetch('http://localhost/IMAD_wiki/Back_end/start/middleware.php/Dusers', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 'id': userId })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+}
+
 </script>
 
 </html>
